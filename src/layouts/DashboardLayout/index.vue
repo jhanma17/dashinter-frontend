@@ -1,20 +1,15 @@
 <template>
   <v-layout>
-    <v-app-bar flat>
-      <v-app-bar-title>
-        <div class="py-4 pl-2 pr-6 title-img">
-          <v-img
-            height="64px"
-            src="../../assets/dashinter-logo-dark.png"
-            cover
-          />
-        </div>
-      </v-app-bar-title>
-
-      <v-spacer></v-spacer>
-    </v-app-bar>
+    <AppBar />
     
-    <v-navigation-drawer color="background" permanent floating width="240" app fixed>
+    <v-navigation-drawer
+      color="background"
+      permanent
+      floating
+      width="240"
+      app
+      fixed
+    >
       <v-list density="compact" nav slim>
         <v-list-item
           class="text-text"
@@ -44,26 +39,18 @@
 </template>
 
 <script>
-export default {};
+import AppBar from "./AppBar.vue";
+
+export default {
+  name: "DashboardLayout",
+  components: {
+    AppBar,
+  },
+};
 </script>
 
 <style scoped>
-.title-img {
-  box-sizing: border-box;
-  width: 240px;
-  height: 64px;
-  border-right: 0.5px solid #d9bfff;
-}
-
-.v-toolbar {
-  border-bottom: 0.5px solid #d9bfff;
-}
-
 .v-navigation-drawer--floating {
   border-right: 0.5px solid #d9bfff;
-}
-
-.v-toolbar-title{
-  margin-inline-start: 0px !important;
 }
 </style>
