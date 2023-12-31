@@ -13,28 +13,33 @@
 
       <v-spacer></v-spacer>
     </v-app-bar>
-    <v-navigation-drawer color="background" permanent floating width="240">
+    
+    <v-navigation-drawer color="background" permanent floating width="240" app fixed>
       <v-list density="compact" nav slim>
         <v-list-item
           class="text-text"
           title="Inicio"
-          value="home"
           prepend-icon="mdi-home-outline"
         ></v-list-item>
         <v-list-item
           class="text-text"
           title="Historial"
-          value="history"
+          to="/history"
           prepend-icon="mdi-calendar-clock"
         ></v-list-item>
         <v-list-item
           class="text-text"
           title="Reparto"
-          value="delivery"
           prepend-icon="mdi-truck-delivery-outline"
         ></v-list-item>
       </v-list>
     </v-navigation-drawer>
+
+    <v-main>
+      <v-container>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
   </v-layout>
 </template>
 
