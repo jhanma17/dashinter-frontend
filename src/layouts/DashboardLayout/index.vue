@@ -1,35 +1,8 @@
 <template>
   <v-layout>
     <AppBar />
-    
-    <v-navigation-drawer
-      color="background"
-      permanent
-      floating
-      width="240"
-      app
-      fixed
-    >
-      <v-list density="compact" nav slim>
-        <v-list-item
-          class="text-text"
-          title="Inicio"
-          prepend-icon="mdi-home-outline"
-        ></v-list-item>
-        <v-list-item
-          class="text-text"
-          title="Historial"
-          to="/history"
-          prepend-icon="mdi-calendar-clock"
-        ></v-list-item>
-        <v-list-item
-          class="text-text"
-          title="Reparto"
-          prepend-icon="mdi-truck-delivery-outline"
-        ></v-list-item>
-      </v-list>
-    </v-navigation-drawer>
 
+    <SideBar />
     <v-main>
       <v-container>
         <router-view></router-view>
@@ -40,17 +13,16 @@
 
 <script>
 import AppBar from "./AppBar.vue";
+import SideBar from "./SideBar.vue";
 
 export default {
   name: "DashboardLayout",
   components: {
     AppBar,
+    SideBar,
   },
 };
 </script>
 
 <style scoped>
-.v-navigation-drawer--floating {
-  border-right: 0.5px solid #d9bfff;
-}
 </style>
