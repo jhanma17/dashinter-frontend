@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar flat>
+  <v-app-bar flat color="black">
       <v-app-bar-title>
         <div class="py-4 pl-2 pr-6 title-img">
           <v-img
