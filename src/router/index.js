@@ -11,6 +11,11 @@ const routes = [
         name: "History",
         component: () => import("@/views/History.vue"),
       },
+      {
+        path: "/history/:date",
+        name: "HistoryDay",
+        component: () => import("@/views/HistoryDay.vue"),
+      },
     ],
   },
 ];

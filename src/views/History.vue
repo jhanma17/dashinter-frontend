@@ -28,11 +28,13 @@ export default {
   data() {
     return {
       numberOfDays: 31,
+      month: "12",
+      year: "2023",
     }
   },
   methods: {
     goToDay(n) {
-      this.$router.push(`/history/${n}`);
+      this.$router.push(`/history/${n}${this.month}${this.year}`);
     },
   },
 };
