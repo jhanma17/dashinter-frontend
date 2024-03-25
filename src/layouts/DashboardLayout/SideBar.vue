@@ -13,6 +13,7 @@
         title="Inicio"
         to="/"
         prepend-icon="mdi-home-outline"
+        exact
       ></v-list-item>
       <v-list-item
         class="text-text"

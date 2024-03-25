@@ -6,9 +6,23 @@
   </v-row>
 
   <v-row justify="center" align="center">
-    <v-btn color="primary" icon="mdi-chevron-left" size="small"> </v-btn>
-    <v-btn variant="text" size="large" flat> Diciembre 2023 </v-btn>
-    <v-btn color="primary" icon="mdi-chevron-right" size="small"> </v-btn>
+    <v-btn
+      @click="previousMonth()"
+      color="primary"
+      icon="mdi-chevron-left"
+      size="small"
+    >
+    </v-btn>
+    <v-btn variant="text" size="large" flat>
+      {{ monthNames[month] }} {{ year }}
+    </v-btn>
+    <v-btn
+      @click="nextMonth()"
+      color="primary"
+      icon="mdi-chevron-right"
+      size="small"
+    >
+    </v-btn>
   </v-row>
 
   <v-row class="mt-8">
@@ -27,15 +41,54 @@ export default {
   name: "History",
   data() {
     return {
-      numberOfDays: 31,
-      month: "12",
-      year: "2023",
-    }
+      month: 0,
+      year: 0,
+      monthNames: [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre",
+      ],
+    };
+  },
+  computed: {
+    numberOfDays() {
+      return new Date(this.year, this.month + 1, 0).getDate();
+    },
   },
   methods: {
     goToDay(n) {
       this.$router.push(`/history/${n}${this.month}${this.year}`);
     },
+    nextMonth() {
+      if (this.month === 11) {
+        this.month = 0;
+        this.year++;
+      } else {
+        this.month++;
+      }
+    },
+    previousMonth() {
+      if (this.month === 0) {
+        this.month = 11;
+        this.year--;
+      } else {
+        this.month--;
+      }
+    },
+  },
+  created() {
+    const today = new Date();
+    this.month = today.getMonth();
+    this.year = today.getFullYear();
   },
 };
 </script>
