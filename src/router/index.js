@@ -7,6 +7,11 @@ const routes = [
     component: () => import("@/layouts/DashboardLayout/index.vue"),
     children: [
       {
+        path: "",
+        name: "Home",
+        component: () => import("@/views/HistoryDay.vue"),
+      },
+      {
         path: "/history",
         name: "History",
         component: () => import("@/views/History.vue"),

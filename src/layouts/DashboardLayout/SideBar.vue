@@ -11,6 +11,7 @@
       <v-list-item
         class="text-text"
         title="Inicio"
+        to="/"
         prepend-icon="mdi-home-outline"
       ></v-list-item>
       <v-list-item

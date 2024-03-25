@@ -10,19 +10,23 @@
         <v-text-field
           v-model="guideId"
           outlined
-          dark
           label="Numero de Guia"
+          color="primary"
           class="mx-2"
           @keyup.enter="getGuidesLocal"
         >
         </v-text-field>
-        <v-btn dark class="mx-2" @click="getGuidesLocal">
+        <v-btn color="primary" class="mx-2 text-text" @click="getGuidesLocal">
           Agregar
-          <v-icon right dark color="white">mdi-plus</v-icon>
+          <v-icon right color="text">mdi-plus</v-icon>
         </v-btn>
-        <v-btn dark @click="downloadSpreadsheet">
+        <v-btn color="primary" class="mx-2 text-text" @click="downloadSpreadsheet">
           Descargar Excel
-          <v-icon right dark color="white">mdi-package-down</v-icon>
+          <v-icon right color="text">mdi-download</v-icon>
+        </v-btn>
+        <v-btn color="primary" class="mx-2 text-text">
+          Guardar
+          <v-icon right color="text">mdi-content-save</v-icon>
         </v-btn>
       </v-row>
     </v-col>
