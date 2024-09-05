@@ -20,7 +20,11 @@
           Agregar
           <v-icon right color="text">mdi-plus</v-icon>
         </v-btn>
-        <v-btn color="primary" class="mx-2 text-text" @click="downloadSpreadsheet">
+        <v-btn
+          color="primary"
+          class="mx-2 text-text"
+          @click="downloadSpreadsheet"
+        >
           Descargar Excel
           <v-icon right color="text">mdi-download</v-icon>
         </v-btn>
@@ -54,58 +58,40 @@ export default {
   },
   methods: {
     async addGuide(id) {
-      const url =
-        "https://www3.interrapidisimo.com/ApiservInter/api/Mensajeria/ObtenerRastreoGuias?guias=" +
-        id;
       try {
         let response = await this.axios({
           method: "GET",
-          url: url,
+          url: `/packages/${id}`,
         });
-        return response.data[0].Guia;
+
+        for (let guide of this.guides) {
+          if (guide.id === id) {
+            guide.destinatario = response.data.destinatario;
+            guide.direccion = response.data.direccion;
+            guide.telefono = response.data.telefono;
+            guide.metodo = response.data.metodo;
+            guide.valorComercial = response.data.valorComercial;
+            guide.total = response.data.total;
+            guide.valorACobrar = response.data.valorACobrar;
+          }
+        }
       } catch (error) {
         console.log(error);
       }
     },
 
     async getGuidesLocal() {
-      const data = await this.addGuide(this.guideId);
-      this.guideId = "";
-      const id = data.NumeroGuia;
-      const destinatario = data.Destinatario.Nombre;
-      const direccion = data.Destinatario.Direccion;
-      const telefono = data.Destinatario.Telefono;
-      const metodo = data.FormasPagoDescripcion;
-      const envio = data.ValorTotal;
-      let totalACobrar = 0;
-      let total = data.ValorTotal;
-      if (metodo === "Crédito") {
-        total = data.ValorDeclarado;
-        if (data.ValorAdicionales == 0) {
-          totalACobrar = 0;
-        } else {
-          totalACobrar = data.ValorDeclarado;
-        }
-      }
-      if (metodo === "Contado" && data.ValorAdicionales != 0) {
-        totalACobrar = data.ValorDeclarado;
-      }
-      if(data.EsAlCobro == true){
-        totalACobrar = data.ValorTotal;
-        if(data.EstaPagada == false){
-          totalACobrar += data.ValorDeclarado;
-        }
-      }
       this.guides.unshift({
-        id,
-        destinatario,
-        direccion,
-        telefono,
-        metodo,
-        envio,
-        total,
-        totalACobrar,
+        id: this.guideId,
+        destinatario: "",
+        direccion: "",
+        telefono: "",
+        metodo: "",
+        valorComercial: "",
+        total: "",
+        valorACobrar: "",
       });
+      this.addGuide(this.guideId);
     },
 
     deleteGuide(id) {

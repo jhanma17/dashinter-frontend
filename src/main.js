@@ -19,6 +19,11 @@ import VueAxios from "vue-axios";
 
 const app = createApp(App);
 
+app.config.globalProperties.window = window;
+
+const baseURL = import.meta.env.VITE_API_ENDPOINT;
+axios.defaults.baseURL = baseURL;
+
 app.use(VueAxios, axios);
 
 registerPlugins(app);

@@ -28,9 +28,9 @@ export default {
         { title: "Direccion", value: "direccion" },
         { title: "Telefono", value: "telefono" },
         { title: "Metodo de Pago", value: "metodo" },
-        { title: "Valor Envio", value: "envio" },
-        { title: "Valor Total", value: "total" },
-        { title: "Total A Cobrar", value: "totalACobrar" },
+        { title: "Valor Comercial", value: "valorComercial" },
+        { title: "Valor del Envio", value: "total" },
+        { title: "Total A Cobrar", value: "valorACobrar" },
         { title: "Acciones", value: "acciones" },
       ],
     };
