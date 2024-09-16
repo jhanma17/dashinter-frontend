@@ -58,6 +58,7 @@ export default {
   },
   methods: {
     async addGuide(id) {
+      this.guideId = "";
       try {
         let response = await this.axios({
           method: "GET",
